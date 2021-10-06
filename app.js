@@ -104,7 +104,10 @@ app.get('/PI', (req, res) => {
 app.get('/SQRT2', (req, res) => {
 	res.status(200).send(Math.SQRT2.toString());
 });
-app.get('/hypotenuse', (req, res) => {
+app.get('/E', (req, res) => {
+	res.status(200).send(Math.E.toString());
+});
+app.get('/hyp', (req, res) => {
 	let args = req.query.args;
 	try {
 		args = JSON.parse(args);
@@ -114,5 +117,15 @@ app.get('/hypotenuse', (req, res) => {
 		console.error(args);
 		res.status(400).send("You have to send a valid JSON array");
 	}
-
 });
+app.get('/pow',(req, res) => {
+	let args = req.query.args;
+	try {
+		args = JSON.parse(args);
+		let result = Ops.pow(args[0], args[1]);
+		res.status(200).send(result.toString());
+	} catch (error) {
+		console.error(args);
+		res.status(400).send("You have to send a valid JSON array");
+	}
+})
