@@ -9,13 +9,13 @@ Single value function accept one value as argument, for example `http://SERVERDO
 ###Constants
 Constants don't need any argument, if you insert any it will be ignored. For example `http://SERVERDOMAIN/PI`
 ####Available functions
-name|type|description
----------|-----------
-sum|List|returns the result of arg1+arg2+arg3...
-sub|List|returns the result of arg1-arg2-arg3...
-mul|List|returns the result of arg1*arg2*arg3...
-div|List|returns the result of arg1/arg2/arg3...
-prime|Value|return `true` if the argument is a prime number, `false` otherwise
-fact|Value|return the factorial of the argument
-PI|Constant|The constant PI
-E|Constant|Euler's number
+|name|type|description|
+|---------|-----------|
+|sum|List|returns the result of arg1+arg2+arg3...|
+|sub|List|returns the result of arg1-arg2-arg3...|
+|mul|List|returns the result of arg1*arg2*arg3...|
+|div|List|returns the result of arg1/arg2/arg3...|
+|prime|Value|return `true` if the argument is a prime number, `false` otherwise|
+|fact|Value|return the factorial of the argument|
+|PI|Constant|The constant PI|
+|E|Constant|Euler's number|
