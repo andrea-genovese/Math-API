@@ -13,14 +13,12 @@ app.get('/sum', (req, res) => {
 		args.forEach(arg => {
 			sum += arg;
 		});
+		res.status(200).send(sum.toString());
 	} catch (error) {
 		console.error(args);
 		res.status(400).send("You have to send a valid JSON array");
-		return;
 	}
-	console.log('success');
-	res.status(200).send(sum.toString());
-})
+});
 app.get('/sub', (req, res) => {
 	let args = req.query.args;
 	let sum = 0;
@@ -30,12 +28,11 @@ app.get('/sub', (req, res) => {
 		for (let i = 1; i < args.length; i++) {
 			sum -= args[i];
 		}
+		res.status(200).send(sum.toString());
 	} catch (error) {
-		console.error(args);
 		res.status(400).send("You have to send a valid JSON array");
-		return;
 	}
-	res.status(200).send(sum.toString());
+
 });
 app.get('/mul', (req, res) => {
 	let args = req.query.args;
@@ -46,14 +43,13 @@ app.get('/mul', (req, res) => {
 		args.forEach(arg => {
 			result *= arg;
 		});
+		res.status(200).send(result.toString());
 	} catch (error) {
 		console.error(args);
 		res.status(400).send("You have to send a valid JSON array");
-		return;
 	}
-	console.log('success');
-	res.status(200).send(result.toString());
-})
+
+});
 app.get('/div', (req, res) => {
 	let args = req.query.args;
 	let result = 0;
@@ -63,13 +59,13 @@ app.get('/div', (req, res) => {
 		for (let i = 1; i < args.length; i++) {
 			result /= args[i];
 		}
+		res.status(200).send(result.toString());
 	} catch (error) {
 		console.error(args);
 		res.status(400).send("You have to send a valid JSON array");
-		return;
 	}
-	res.status(200).send(result.toString());
-})
+
+});
 app.get('/fact', (req, res) => {
 	console.log(req.query);
 	const n = parseInt(req.query.args);
@@ -91,6 +87,32 @@ app.get('/prime', (req, res) => {
 		res.status(400).send('You have to send a single integer in the args field');
 	} else {
 		res.status(200).send(Ops.isPrime(arg));
+	}
+});
+app.get('/sqrt', (req, res) => {
+	let arg = req.query.args;
+	arg = parseFloat(arg);
+	if (isNaN(arg)) {
+		res.status(400).send('You have to send a single float in the args field');
+	} else {
+		res.status(200).send(Math.sqrt(arg).toString);
+	}
+});
+app.get('/PI', (req, res) => {
+	res.status(200).send(Math.PI.toString());
+});
+app.get('/SQRT2', (req, res) => {
+	res.status(200).send(Math.SQRT2.toString());
+});
+app.get('/hypotenuse', (req, res) => {
+	let args = req.query.args;
+	try {
+		args = JSON.parse(args);
+		let result = Math.sqrt(args[0] * args[0] + args[1] * args[1]);
+		res.status(200).send(result.toString());
+	} catch (error) {
+		console.error(args);
+		res.status(400).send("You have to send a valid JSON array");
 	}
 
 });
