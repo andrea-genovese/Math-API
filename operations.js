@@ -19,7 +19,7 @@ class Ops {
         return true;
     }
     pow(n, exp) {
-        if (exp = 1)
+        if (exp === 1)
             return n;
         return n * this.pow(n, exp - 1)
     }

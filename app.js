@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3000;
 app.listen(PORT, () => { console.log(`Listening on port ${PORT}`) })
 app.use(express.json());
+
 app.get('/sum', (req, res) => {
 	let args = req.query.args;
 	let sum = 0;
@@ -120,12 +121,13 @@ app.get('/hyp', (req, res) => {
 });
 app.get('/pow',(req, res) => {
 	let args = req.query.args;
+	console.log(args);
 	try {
 		args = JSON.parse(args);
-		let result = Ops.pow(args[0], args[1]);
+		let result = Ops.pow(parseFloat(args[0]), parseFloat(args[1]));
 		res.status(200).send(result.toString());
 	} catch (error) {
 		console.error(args);
-		res.status(400).send("You have to send a valid JSON array");
+		res.status(400).send("You have to send a valid JSON number array");
 	}
 })
